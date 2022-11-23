@@ -1,0 +1,19 @@
+{
+    "files.exclude":
+    {
+      "node_modules": true,
+      ".angular": true,
+      ".browserslistrc":true,
+      ".editorconfig":true,
+      ".eslintrc.json":true,
+      "angular.json":true,
+      "ionic.config.json":true,
+      "package.json":true,
+      "karma.conf.js":true,
+      "capacitor.config.ts":true,
+      "package-lock.json":true,
+      "tsconfig.app.json":true,
+      "tsconfig.json":true,
+      "tsconfig.spec.json":true,
+    }
+}
