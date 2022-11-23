@@ -14,7 +14,7 @@ export class MetroPage implements OnInit {
   apiMetro: Line[] = [];
   estado: string[] = ['Operativa','Temporalmente cerrada', 'No habilitada', 'Con accesos cerrados']
 
-  constructor(private metro: MetroService, private app: AppComponent) { }
+  constructor(private metro: MetroService, public app: AppComponent) { }
 
   ngOnInit(){
     this.app.loading('show');

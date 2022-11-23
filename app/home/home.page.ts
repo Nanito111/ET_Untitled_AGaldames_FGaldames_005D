@@ -10,7 +10,7 @@ import { AppComponent } from '../app.component';
 })
 export class HomePage implements OnInit{
 
-  constructor(private app: AppComponent, private router: Router) {}
+  constructor(public app: AppComponent, private router: Router) {}
 
   ngOnInit(): void {
     const btnQR = document.getElementById('qr');
@@ -38,7 +38,7 @@ export class HomePage implements OnInit{
       txtfuncion!.innerHTML = 'GENERAR';
     }
 
-    version!.innerHTML = localStorage.getItem('user') == null ? '' : localStorage.getItem('user')?.toUpperCase();
+    version!.innerHTML = localStorage.getItem('user') == null ? '' : localStorage.getItem('user')!.toUpperCase();
   }
 
   qrButton(){

@@ -66,7 +66,7 @@ export class AppComponent implements OnInit{
 
   
 
-  toggleTheme(event){
+  toggleTheme(event: any){
     document.body.classList.toggle('dark', event.detail.checked);
   }
 
@@ -81,7 +81,7 @@ export class AppComponent implements OnInit{
     }
   }
 
-  async alertMsg(message){
+  async alertMsg(message: string){
     const alert = await this.alertController.create({
       header: 'Error...',
       message: message,

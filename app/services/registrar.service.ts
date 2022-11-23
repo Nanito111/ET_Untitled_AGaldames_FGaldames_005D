@@ -18,16 +18,14 @@ const USUARIOS_KEY = 'mis-usuarios';
 })
 export class RegistrarService {
 
-  private _storage: Storage;
   newUsuario: Usuario = <Usuario>{};
 
-  constructor(private storage : Storage) { 
+  constructor(public storage : Storage) { 
     this.init();
   }
 
   async init(){
     const storage = await this.storage.create();
-    this._storage = storage;
   }
 
   async addUsuario(dato : Usuario ):Promise<any> {

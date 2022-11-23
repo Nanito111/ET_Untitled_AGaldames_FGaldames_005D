@@ -12,16 +12,15 @@ import { RegistrarService, Usuario } from '../services/registrar.service';
 })
 export class RegistroPage implements OnInit {
 
-  formularioLogin : FormGroup;
   formularioRegistro : FormGroup;
-  usuarios : Usuario[];
+  usuarios! : Usuario[];
   newUsuarios : Usuario = <Usuario>{};
 
   constructor
   (
     private app : AppComponent,
     private registroUsuario: RegistrarService,
-    private fb: FormBuilder
+    private fb: FormBuilder,
   ) 
   {
     this.formularioRegistro = this.fb.group({
@@ -72,7 +71,7 @@ export class RegistroPage implements OnInit {
         this.newUsuarios.correo   = form.correo,
         this.newUsuarios.pass     = form.password,
         this.newUsuarios.repass   = form.repass,
-        this.newUsuarios.isAlumno = localStorage.getItem('type'),
+        this.newUsuarios.isAlumno = localStorage.getItem('type')!,
 
         this.registroUsuario.getDatos().then(datos=>{
           if (datos != null){
@@ -106,7 +105,7 @@ export class RegistroPage implements OnInit {
   }
 
 
-  async checkValid(option){
+  async checkValid(option: number){
     var form = this.formularioRegistro.value;
     const repassInput = document.getElementById('repass');
 

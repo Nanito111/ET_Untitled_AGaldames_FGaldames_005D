@@ -8,7 +8,7 @@ import { AppComponent } from '../app.component';
 })
 export class HorarioPage implements OnInit {
 
-  constructor(private app: AppComponent) {}
+  constructor(public app: AppComponent) {}
 
   ngOnInit() {
   }

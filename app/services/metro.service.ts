@@ -15,7 +15,7 @@ export interface Line{
 export interface Station{
   name: string;
   id: string;
-  status: string;
+  status: any;
   is_closed_by_schedule: boolean;
 }
 

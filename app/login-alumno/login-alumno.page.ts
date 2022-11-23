@@ -13,7 +13,6 @@ import { RegistrarService } from '../services/registrar.service';
 export class LoginAlumnoPage implements OnInit {
 
   formularioLogin : FormGroup;
-  formularioRegistro : FormGroup;
 
   constructor(
               private app : AppComponent,
@@ -38,25 +37,25 @@ export class LoginAlumnoPage implements OnInit {
     var f = this.formularioLogin.value;
     var a = 0;
 
-    this.registroUsuario.getDatos().then(datos=>{
-      if (!datos || datos.length == 0 ){
-        return null;
-      }
 
-      for (let obj of datos){
-        if ((obj.correo == f.correo && obj.pass == f.password) && obj.isAlumno == 'true'){
-          a = 1;
-          console.log('ingresado');
-          localStorage.setItem('ingresado','true');
-          localStorage.setItem('user', obj.nombre);
-          this.app.navigate('home');
-          break;
+    this.registroUsuario.getDatos().then(datos=>{
+      if (datos != null){
+        for (let obj of datos){
+          if ((obj.correo == f.correo && obj.pass == f.password) && obj.isAlumno == 'true'){
+            a = 1;
+            console.log('ingresado');
+            localStorage.setItem('ingresado','true');
+            localStorage.setItem('user', obj.nombre);
+            this.app.navigate('home');
+            break;
+          }
+        }
+        console.log(a);
+        if (a == 0){
+          this.app.showToast('bottom', 'Correo o Contraseña INCORRECTOS', 2000);
         }
       }
-      console.log(a);
-      if (a == 0){
-        this.app.showToast('bottom', 'Correo o Contraseña INCORRECTOS', 2000);
-      }
+
     });
   }
 }
