@@ -13,7 +13,7 @@ import { Drivers } from '@ionic/storage';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
-
+import { BarcodeScanner } from '@awesome-cordova-plugins/barcode-scanner/ngx';
 
 @NgModule({
   declarations: [AppComponent],
@@ -28,9 +28,9 @@ import { HttpClientModule } from '@angular/common/http';
       name: 'mydb',
       driverOrder: [Drivers.IndexedDB, Drivers.LocalStorage]
     }),
-    HttpClientModule
-  ],
-  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
+    HttpClientModule,
+    ],
+  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy },BarcodeScanner],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

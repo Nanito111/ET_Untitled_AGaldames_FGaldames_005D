@@ -9,7 +9,7 @@
     </div>
   </div>
 
-  <form #formulario="ngForm" (ngSubmit)="onSubmit()">
+  <form #formulario="ngForm" (ngSubmit)="createCode()">
     <ion-item>
       <ion-label >Sección: </ion-label>
       <ion-input class="input-seccion" type="text" name="seccion" [(ngModel)]="informacion.Seccion" required color="dark"></ion-input>
@@ -32,16 +32,8 @@
     </ion-button>
   </form>
   <ion-modal #modal trigger="open-modal2">
-    <ng-template>
-      <ion-content>
-        <ion-toolbar class="modal-toolbar">
-          <ion-title>QR Clase ****</ion-title>
-          <ion-buttons slot="end">
-            <ion-button (click)="modal.dismiss()"><ion-icon slot="icon-only" name="close"></ion-icon></ion-button>
-          </ion-buttons>
-        </ion-toolbar>
-        <img class="img-qr-modal" src="/assets/qr-code.jpg">
+      <ion-content *ngIf="createdCode">
+        <ngx-qrcode class="qrgenerated" [value]="createdCode"></ngx-qrcode>
       </ion-content>
-    </ng-template>
   </ion-modal>
 </ion-content>

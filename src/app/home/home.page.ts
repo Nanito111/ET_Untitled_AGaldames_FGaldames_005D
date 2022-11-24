@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
+import { BarcodeScanner } from '@awesome-cordova-plugins/barcode-scanner/ngx';
+
 import { AppComponent } from '../app.component';
 
 @Component({
@@ -10,12 +12,12 @@ import { AppComponent } from '../app.component';
 })
 export class HomePage implements OnInit{
 
-  constructor(public app: AppComponent, private router: Router) {}
+  scannedCode:string | null = null;  
+
+  constructor(public app: AppComponent, private router: Router,
+              private barcodeScanner : BarcodeScanner) {}
 
   ngOnInit(): void {
-    const btnQR = document.getElementById('qr');
-    btnQR?.setAttribute('routerLink','/generar-qr');
-
   }
 
   ionViewWillEnter(){
@@ -43,11 +45,16 @@ export class HomePage implements OnInit{
 
   qrButton(){
     if (localStorage.getItem('type') == 'true') {
-      this.router.navigate(['']);
+      this.scanCode();
     } else {
       this.router.navigate(['/generar-qr']);
     }
   }
 
-
+  scanCode(){
+    this.barcodeScanner.scan().then(data=>{
+      this.scannedCode = data.text;
+      console.log(this.scannedCode);
+    })
+  }
 }

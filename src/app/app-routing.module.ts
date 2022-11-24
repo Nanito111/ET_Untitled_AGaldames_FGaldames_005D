@@ -50,7 +50,6 @@ const routes: Routes = [
     loadChildren: () => import('./metro/metro.module').then( m => m.MetroPageModule),
     canActivate: [IngresadoGuard]
   },
-
 ];
 
 @NgModule({

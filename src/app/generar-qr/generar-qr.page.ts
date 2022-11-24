@@ -7,10 +7,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class GenerarQrPage implements OnInit {
 
-  constructor() { }
+  createdCode:string | null = null;
+  // scannedCode = null;
 
-  ngOnInit() {
-  }
   informacion={
     Seccion:'',
     Fecha:'',
@@ -18,9 +17,21 @@ export class GenerarQrPage implements OnInit {
     HoraTermino:''
   }
 
-  onSubmit(){
-    console.log('Submit');
-    console.log(this.informacion);
+  constructor() { }
+
+  ngOnInit() {
   }
+
+  createCode(){
+    console.log('Submit');
+    this.createdCode = JSON.stringify(this.informacion);
+  }
+
+  // scanCode(){
+  //   this.barcodeScanner.scan().then(data=>{
+  //     this.scannedCode = data.text;
+  //   })
+  // }
+  
 
 }

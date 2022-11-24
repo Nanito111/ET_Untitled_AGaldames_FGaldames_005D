@@ -8,12 +8,15 @@ import { GenerarQrPageRoutingModule } from './generar-qr-routing.module';
 
 import { GenerarQrPage } from './generar-qr.page';
 
+import { NgxQRCodeModule } from '@techiediaries/ngx-qrcode';
+
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    GenerarQrPageRoutingModule
+    GenerarQrPageRoutingModule,
+    NgxQRCodeModule,
   ],
   declarations: [GenerarQrPage]
 })
