@@ -30,5 +30,13 @@ npm install phonegap-plugin-barcodescanner
 ```
 
 ```
-npm install @awesome-cordova-plugins/barcode-scanner
+npm install @awesome-cordova plugins/barcode-scanner
+```
+
+3.- Ejecutar Cypress
+
+- Antes de ejecutar Cypress hay que tener ejecutado el server ionic.
+
+```
+npx cypress open
 ```
