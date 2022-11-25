@@ -9,7 +9,7 @@
 
 Requisitos:
 
-1. Tener instalado Ionic/storage
+1. Tener instalado Ionic/storage.
 
 ```
  npm install --save @ionic/storage
@@ -19,7 +19,7 @@ Requisitos:
  npm install --save @ionic/storage-angular 
 ```
 
-2. Instalar complementos para CodigoQR y EscanearQR
+2. Instalar complementos para CodigoQR y EscanearQR.
 
 ```
 npm i @techiediaries/ngx-qrcode --save
@@ -33,9 +33,13 @@ npm install phonegap-plugin-barcodescanner
 npm install @awesome-cordova-plugins/barcode-scanner
 ```
 
-3.- Ejecutar Cypress
+3.- Cypress Testing.
 
-- Antes de ejecutar Cypress hay que tener ejecutado el server ionic.
+```
+npm install cypress --save-dev
+```
+
+- ¡Antes de ejecutar Cypress hay que tener ejecutado el server ionic!.
 
 ```
 npx cypress open
