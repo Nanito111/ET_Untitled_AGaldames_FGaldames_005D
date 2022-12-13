@@ -40,7 +40,7 @@ npm install @awesome-cordova-plugins/barcode-scanner
 npm install cypress --save-dev
 ```
 
-- ¡Antes de ejecutar Cypress hay que tener ejecutado el server ionic!.
+**¡Antes de ejecutar Cypress hay que tener ejecutado el server ionic!.**
 
 ```
 npx cypress open
