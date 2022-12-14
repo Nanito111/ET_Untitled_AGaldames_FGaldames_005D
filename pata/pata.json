@@ -103,6 +103,15 @@
       "horaTermino": "06:16",
       "asignaturaId": "MAT",
       "asistencia": []
+    },
+    {
+      "id": "PGY-008V.2022-12-15.08:00.12:00",
+      "seccion": "008V",
+      "fecha": "2022-12-15",
+      "horaInicio": "08:00",
+      "horaTermino": "12:00",
+      "asignaturaId": "PGY",
+      "asistencia": []
     }
   ]
 }
