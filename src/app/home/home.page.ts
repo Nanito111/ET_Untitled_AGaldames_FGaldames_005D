@@ -94,14 +94,14 @@ export class HomePage implements OnInit{
   }
 
   openingModalQr(){
-    this.app.loading('show');
+    // this.app.loading('show');
     // GET de ASIGNATURAS
     this.asistencia.listarAsignaturas()
-    .pipe(
-      finalize(async () => {
-        this.app.loading('hide');
-      })
-    )
+    // .pipe(
+    //   finalize(async () => {
+    //     this.app.loading('hide');
+    //   })
+    // )
     .subscribe(data => {
       this.asignaturas = data;
     });
