@@ -62,16 +62,25 @@ export class HomePage implements OnInit{
     this.barcodeScanner.scan().then(data=>{
       this.scannedCode = data.text;
       console.log(this.scannedCode);
+      // PATCH de ALUMNO
+      this.asistencia.getAsistencia(this.scannedCode!)
+      .subscribe(data => {
+        let lista = data["asistencia"];
+        let user = localStorage.getItem('userId') == null ? '' : localStorage.getItem('userId')!;
+        lista.push(user);
+        this.asistencia.addAlumnoToClase(this.scannedCode!, lista);
+      });
     })
+  }
 
-    // PATCH de ALUMNO
-    this.asistencia.getAsistencia(this.scannedCode!)
+  addAlumno(){
+    // PATCH de ALUMNO Para testeo
+    this.asistencia.getAsistencia(this.createdCode!)
     .subscribe(data => {
       let lista = data["asistencia"];
       lista.push(localStorage.getItem('userId'));
-      this.asistencia.addAlumnoToClase(this.scannedCode!, lista);
+      this.asistencia.addAlumnoToClase(this.createdCode!, lista);
     });
-
   }
 
   informacion: IClase = {

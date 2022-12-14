@@ -19,6 +19,7 @@
     </ion-button>
     <p class="txt-funcion" id="funcion" color="dark">ESCANEAR</p>
     <p class="txt-qr-alumno" id="txt-qr">QR CLASE</p>
+    <p >result {{scannedCode}}</p>
   
   </div>
   <ng-template #elseBlock>
@@ -27,6 +28,9 @@
       <ngx-qrcode class="qrgenerated" [value]="createdCode"></ngx-qrcode>
       <ion-button class="terminar-button" (click)="terminarClase()" expand="block" shape="round">
         Terminar Clase
+      </ion-button>
+      <ion-button class="terminar-button" (click)="addAlumno()" expand="block" shape="round">
+        Add Alumno (testing)
       </ion-button>
     </div>
     <ng-template #elseBlock2>
