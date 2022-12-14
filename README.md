@@ -44,5 +44,9 @@ npm install cypress --save-dev
 ```
 npx cypress open
 ```
+# API Rest 
+- [JSON Server](http://129.151.120.58:3000/)
+
+# 
 
 ![Logo](https://i.imgur.com/LdNQIvH.png)
