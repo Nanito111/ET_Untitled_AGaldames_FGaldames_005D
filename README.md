@@ -5,7 +5,6 @@
 # Integrantes :
 
 * Alfredo Galdames - [@XLangley](https://github.com/XLangley)
-
 * Francisco Galdames - [@Nanito111](https://github.com/Nanito111)
 
 # ¡Requisitos!:
@@ -45,5 +44,15 @@ npm install cypress --save-dev
 ```
 npx cypress open
 ```
-#
+
+# 4.- JSON Server
+
+```
+cd pata
+```
+
+```
+json-server --watch pata.json --host  0.0.0.0 --port 8101
+```
+
 ![Logo](https://i.imgur.com/LdNQIvH.png)
