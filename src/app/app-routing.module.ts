@@ -31,11 +31,6 @@ const routes: Routes = [
     canActivate: [NoIngresadoGuard]
   },
   {
-    path: 'generar-qr',
-    loadChildren: () => import('./generar-qr/generar-qr.module').then( m => m.GenerarQrPageModule),
-    canActivate: [IngresadoGuard]
-  },
-  {
     path: 'horario',
     loadChildren: () => import('./horario/horario.module').then( m => m.HorarioPageModule),
     canActivate: [IngresadoGuard]

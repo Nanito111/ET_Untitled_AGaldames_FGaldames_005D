@@ -1,0 +1,38 @@
+.header-asistencia{
+    position: relative;
+    bottom: 1.8rem;
+    height: 6rem;
+  
+    border-radius: 0 0 2rem 2rem;
+  
+    background: linear-gradient(50.47deg, #CBE9F3 3.75%, #2EA0C4 89.73%);
+}
+
+.txt-asistencia{
+    display: block;
+  
+    position: relative;
+    top: 2.75rem;
+  
+    margin-left: auto;
+    margin-right: auto;
+  
+    color: black;
+    font-weight: bold;
+    text-align: center;
+}
+
+.menu-button{
+    display: block;
+    position: relative;
+  
+    left: 0.5rem;
+    bottom: 0.8rem;
+    
+  }
+  
+  .ico-menu-button{
+    color: black;
+    font-size: 2rem;
+    font-weight: bold;
+  }

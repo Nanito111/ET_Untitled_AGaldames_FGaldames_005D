@@ -1,0 +1,108 @@
+{
+  "asignaturas": [
+    {
+      "id": "PGY",
+      "nombre": "Programacion de Aplicaciones Moviles"
+    },
+    {
+      "id": "ARQ",
+      "nombre": "Arquitectura de Software"
+    },
+    {
+      "id": "MAT",
+      "nombre": "Estadistica Descriptiva"
+    }
+  ],
+  "clases": [
+    {
+      "id": "PGY-008V.0978-03-08.23:47.23:56",
+      "seccion": "008V",
+      "fecha": "0978-03-08",
+      "horaInicio": "23:47",
+      "horaTermino": "23:56",
+      "asignaturaId": "PGY",
+      "asistencia": []
+    },
+    {
+      "id": "PGY-099D.3671-07-12.12:36.04:36",
+      "seccion": "099D",
+      "fecha": "3671-07-12",
+      "horaInicio": "12:36",
+      "horaTermino": "04:36",
+      "asignaturaId": "PGY",
+      "asistencia": []
+    },
+    {
+      "id": "PGY-124.0434-03-12.12:03.23:04",
+      "seccion": "124",
+      "fecha": "0434-03-12",
+      "horaInicio": "12:03",
+      "horaTermino": "23:04",
+      "asignaturaId": "PGY",
+      "asistencia": []
+    },
+    {
+      "id": "PGY-123.2022-12-13.00:20.02:20",
+      "seccion": "123",
+      "fecha": "2022-12-13",
+      "horaInicio": "00:20",
+      "horaTermino": "02:20",
+      "asignaturaId": "PGY",
+      "asistencia": []
+    },
+    {
+      "id": "ARQ-123.0123-03-12.12:03.12:23",
+      "seccion": "123",
+      "fecha": "0123-03-12",
+      "horaInicio": "12:03",
+      "horaTermino": "12:23",
+      "asignaturaId": "ARQ",
+      "asistencia": []
+    },
+    {
+      "id": "MAT-1235.2022-12-23.00:30.03:27",
+      "seccion": "1235",
+      "fecha": "2022-12-23",
+      "horaInicio": "00:30",
+      "horaTermino": "03:27",
+      "asignaturaId": "MAT",
+      "asistencia": []
+    },
+    {
+      "id": "MAT-1234.2022-12-17.00:32.03:30",
+      "seccion": "1234",
+      "fecha": "2022-12-17",
+      "horaInicio": "00:32",
+      "horaTermino": "03:30",
+      "asignaturaId": "MAT",
+      "asistencia": []
+    },
+    {
+      "id": "ARQ-1232.0003-05-31.23:04.12:03",
+      "seccion": "1232",
+      "fecha": "0003-05-31",
+      "horaInicio": "23:04",
+      "horaTermino": "12:03",
+      "asignaturaId": "ARQ",
+      "asistencia": []
+    },
+    {
+      "id": "ARQ-12432.213432-03-12.12:03.23:04",
+      "seccion": "12432",
+      "fecha": "213432-03-12",
+      "horaInicio": "12:03",
+      "horaTermino": "23:04",
+      "asignaturaId": "ARQ",
+      "asistencia": []
+    },
+    {
+      "id": "MAT-827321.2022-12-15.03:16.06:16",
+      "seccion": "827321",
+      "fecha": "2022-12-15",
+      "horaInicio": "03:16",
+      "horaTermino": "06:16",
+      "asignaturaId": "MAT",
+      "asistencia": []
+    }
+  ]
+}

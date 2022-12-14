@@ -10,14 +10,84 @@
   <div class="parent-welcome-version" color="dark">
     <p class="txt-welcome" color="dark">BIENVENIDO</p>
     <p class="txt-version" id="version"></p>
-    <p class="txt-version"></p>
   </div>
-  <ion-button id="qr" (click)="qrButton()">
-    <img src="/assets/qr-code.jpg " class="img-qr">
-  </ion-button>
-  <div>
-    <p class="txt-funcion" id="funcion" color="dark"></p>
-    <p id="txt-qr">QR CLASE</p>
-    <p>resultado {{ scannedCode }}</p>
+  
+  <div *ngIf="isAlumno === 'true'; else elseBlock">
+
+    <ion-button class="btn-qr-alumno" id="qr" (click)="qrButton()">
+      <img src="/assets/qr-code.jpg " class="img-qr">
+    </ion-button>
+    <p class="txt-funcion" id="funcion" color="dark">ESCANEAR</p>
+    <p class="txt-qr-alumno" id="txt-qr">QR CLASE</p>
+  
+  </div>
+  <ng-template #elseBlock>
+    <div *ngIf="createdCode; else elseBlock2">
+      <h3 color="dark" class="subtitle-clase ion-text-center">QR CLASE</h3>
+      <ngx-qrcode class="qrgenerated" [value]="createdCode"></ngx-qrcode>
+      <ion-button class="terminar-button" (click)="terminarClase()" expand="block" shape="round">
+        Terminar Clase
+      </ion-button>
+    </div>
+    <ng-template #elseBlock2>
+      <ion-button class="btn-qr-docente" id="qr" (click)="qrButton()">
+        <img src="/assets/qr-code.jpg " class="img-qr">
+      </ion-button>
+      <p class="txt-funcion" id="funcion" color="dark">GENERAR</p>
+      <p class="txt-qr-docente" id="txt-qr">QR CLASE</p>
+    </ng-template>
+  </ng-template>
+
+  <div *ngIf="canCreateQr">
+    <ion-modal #modal trigger="qr" (ionModalWillPresent)="openingModalQr()">
+      <ng-template>
+        <ion-header>
+          <ion-toolbar>
+            <ion-buttons slot="start">
+              <ion-button (click)="closeModalQr(this.modal)">Cancelar</ion-button>
+            </ion-buttons>
+          </ion-toolbar>
+        </ion-header>
+        <ion-content class="ion-padding">
+          <form #formulario="ngForm" (ngSubmit)="createCode(this.modal)">
+            <ion-card>
+              <ion-card-header>
+                <ion-card-title class="ion-text-center">Nueva Clase</ion-card-title>
+              </ion-card-header>
+              <ion-card-content>
+                <ion-item>
+                  <ion-label >Sección: </ion-label>
+                  <ion-input class="input-seccion" type="text" name="seccion" [(ngModel)]="informacion.seccion" required color="dark"></ion-input>
+                </ion-item>
+                <ion-list>
+                  <ion-item>
+                    <ion-select interface="action-sheet" placeholder="Asignatura..." name="asignatura"  [(ngModel)]="informacion.asignaturaId" required color="dark">
+                      <ion-select-option *ngFor="let asignatura of asignaturas;" [value]="asignatura.id">{{asignatura.nombre}}</ion-select-option>
+                    </ion-select>
+                  </ion-item>
+                </ion-list>
+                <ion-item>
+                  <ion-label>Fecha: </ion-label>
+                  <ion-input class="input-fecha" type="date" name="date" [(ngModel)]="informacion.fecha" required color="dark"></ion-input>
+                </ion-item>
+                <ion-item>
+                  <ion-label>Hora Inicio: </ion-label>
+                  <ion-input class="input-Hinicio" type="time" name="HraInicio" [(ngModel)]="informacion.horaInicio" required color="dark"></ion-input>
+                </ion-item>
+                <ion-item>
+                  <ion-label>Hora Termino: </ion-label>
+                  <ion-input class="input-HTermino" type="time" name="HraTermino" [(ngModel)]="informacion.horaTermino" required color="dark"></ion-input>
+                </ion-item>
+                
+            
+                <ion-button type="submit" expand="block" class="btn-generar" [disabled]="formulario.invalid">
+                  Generar
+                </ion-button>
+              </ion-card-content>
+            </ion-card>
+          </form>
+        </ion-content>
+      </ng-template>
+    </ion-modal>
   </div>
 </ion-content>

@@ -33,7 +33,6 @@ export class MetroPage implements OnInit {
       this.apiMetro.push(...data.lines);
     });
 
-
     //load Style
     const header = document.getElementById('header-metro');
 

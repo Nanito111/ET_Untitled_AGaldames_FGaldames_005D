@@ -1,9 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 
 import { BarcodeScanner } from '@awesome-cordova-plugins/barcode-scanner/ngx';
+import { IonModal} from '@ionic/angular';
 
 import { AppComponent } from '../app.component';
+import { AsistenciaService, IClase } from '../services/asistencia.service';
+
+import { finalize } from 'rxjs/internal/operators/finalize';
+
+
 
 @Component({
   selector: 'app-home',
@@ -12,32 +17,36 @@ import { AppComponent } from '../app.component';
 })
 export class HomePage implements OnInit{
 
-  scannedCode:string | null = null;  
+  scannedCode:string | null = null;
+  createdCode:string | null = null;
+  canCreateQr:boolean = false;
+  isAlumno: string | null = localStorage.getItem('type');
+  asignaturas: any;
 
-  constructor(public app: AppComponent, private router: Router,
-              private barcodeScanner : BarcodeScanner) {}
+  constructor(public app: AppComponent,
+              private barcodeScanner : BarcodeScanner,
+              private asistencia : AsistenciaService,
+              ) {}
 
   ngOnInit(): void {
+    console.log("ayuda");
   }
 
   ionViewWillEnter(){
     const header = document.getElementById('header');
-    const btnQR = document.getElementById('qr');
-    const txtqr = document.getElementById('txt-qr');
     const version = document.getElementById('version');
-    const txtfuncion = document.getElementById('funcion');
-
 
     if (localStorage.getItem('type') == 'true') {
       header?.classList.add('header-alumno');
-      btnQR?.classList.add('btn-qr-alumno');
-      txtqr?.classList.add('txt-qr-alumno');
-      txtfuncion!.innerHTML = 'ESCANEAR';
     } else {
       header?.classList.add('header-docente');
-      btnQR?.classList.add('btn-qr-docente');
-      txtqr?.classList.add('txt-qr-docente');
-      txtfuncion!.innerHTML = 'GENERAR';
+
+      if (localStorage.getItem('claseCreada')) {
+        this.canCreateQr = false;
+        this.createdCode = localStorage.getItem('claseCreada');
+      }else{
+        this.canCreateQr = true;
+      }
     }
 
     version!.innerHTML = localStorage.getItem('user') == null ? '' : localStorage.getItem('user')!.toUpperCase();
@@ -46,8 +55,6 @@ export class HomePage implements OnInit{
   qrButton(){
     if (localStorage.getItem('type') == 'true') {
       this.scanCode();
-    } else {
-      this.router.navigate(['/generar-qr']);
     }
   }
 
@@ -56,5 +63,69 @@ export class HomePage implements OnInit{
       this.scannedCode = data.text;
       console.log(this.scannedCode);
     })
+
+    // PATCH de ALUMNO
+    this.asistencia.getAsistencia(this.scannedCode!)
+    .subscribe(data => {
+      let lista = data["asistencia"];
+      lista.push(localStorage.getItem('userId'));
+      this.asistencia.addAlumnoToClase(this.scannedCode!, lista);
+    });
+
   }
+
+  informacion: IClase = {
+    id:'',
+    seccion:'',
+    fecha:'',
+    horaInicio:'',
+    horaTermino:'',
+    asignaturaId: '',
+    asistencia: []
+  }
+
+  openingModalQr(){
+    this.app.loading('show');
+    // GET de ASIGNATURAS
+    this.asistencia.listarAsignaturas()
+    .pipe(
+      finalize(async () => {
+        this.app.loading('hide');
+      })
+    )
+    .subscribe(data => {
+      this.asignaturas = data;
+    });
+  }
+
+  closeModalQr(modal: IonModal){
+    modal.dismiss();
+  }
+
+  createCode(modal: IonModal){
+    console.log('Submit');
+    this.closeModalQr(modal);
+    
+    this.informacion.id = 
+      this.informacion.asignaturaId + "-" + this.informacion.seccion + "." +
+      this.informacion.fecha + "." +
+      this.informacion.horaInicio + "." +
+      this.informacion.horaTermino;
+
+    this.createdCode = this.informacion.id;
+
+    localStorage.setItem('claseCreada', this.createdCode);
+
+    this.canCreateQr = false;
+    
+    this.asistencia.crearClase(this.informacion).subscribe();
+  }
+
+  terminarClase(){
+    this.createdCode = null;
+    localStorage.removeItem('claseCreada');
+    this.canCreateQr = true;
+  }
+
+  
 }

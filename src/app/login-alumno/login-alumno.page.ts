@@ -46,6 +46,7 @@ export class LoginAlumnoPage implements OnInit {
             console.log('ingresado');
             localStorage.setItem('ingresado','true');
             localStorage.setItem('user', obj.nombre);
+            localStorage.setItem('userId', obj.correo);
             this.app.navigate('home');
             break;
           }
